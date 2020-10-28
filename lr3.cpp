@@ -21,5 +21,30 @@ int main()
             printf("%d\t", matrix[c][d]);
         printf("\n");
     }
+
+    for (c = 0; c < order; c++) // проверка и запись наибольшего по модулю элемента а также его расположение во временные элементы
+        for (d = 0; d < order; d++)
+            if (abs(matrix[c][d]) > abs(temp))
+            {
+                temp = matrix[c][d];
+                tempC = c;
+                tempD = d;
+            }
+
+    for (c = 0; c < order - 1; c++) // создание новой матрицы без строки и столбца с наибольшим по модулю элемента
+        for (d = 0; d < order - 1; d++) {
+            if (tempC != c && tempD != d)
+            {
+                newmatrix[c][d] = matrix[c][d];
+            }
+        }
+
+    printf("novaya matrica:\n");
+
+    for (c = 0; c < order - 1; c++) { // вывод новой матрицы
+        for (d = 0; d < order - 1; d++)
+            printf("%d\t", newmatrix[c][d]);
+        printf("\n");
+    }
     return 0;
 }
